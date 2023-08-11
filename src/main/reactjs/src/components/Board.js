@@ -1,3 +1,4 @@
+
 import axios from 'axios';
 import React, { useCallback, useEffect, useState } from 'react';
 import {Link, useNavigate, useParams} from 'react-router-dom';
@@ -18,7 +19,7 @@ const Board = () => {
     useEffect(() => {
         const getBoard = async () => {
             try {
-                const response = await axios.get(`http://localhost:9090/board/board/${boardNo}`, {
+                const response = await axios.get(`/board/board/${boardNo}`, {
                     headers: {
                         Authorization: `Bearer ${sessionStorage.getItem("ACCESS_TOKEN")}`
                     }
@@ -65,7 +66,7 @@ const Board = () => {
 
         const deleteBoardAxios = async () => {
             try {
-                const response = await axios.delete(`http://localhost:9090/board/board/${boardNo}`, {
+                const response = await axios.delete(`/board/board/${boardNo}`, {
                     headers: {
                         Authorization: `Bearer ${sessionStorage.getItem("ACCESS_TOKEN")}`
                     }
@@ -231,7 +232,7 @@ const Board = () => {
 
         const updateBoardAxios = async () => {
             try {
-                const response = await axios.put('http://localhost:9090/board/board', sendFormData, {
+                const response = await axios.put('/board/board', sendFormData, {
                     headers: {
                         Authorization: `Bearer ${sessionStorage.getItem("ACCESS_TOKEN")}`,
                         "Content-Type": "multipart/form-data"
